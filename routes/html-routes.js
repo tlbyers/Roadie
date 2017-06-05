@@ -23,13 +23,13 @@ module.exports = function(app) {
   });
 
   // blog route loads blog.html
-  app.get("/add_view", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/add_view.html"));
+  app.get("/add", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/add.html"));
   });
 
   // authors route loads author-manager.html
-  app.get("/list_places", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/list_places.html"));
+  app.get("/view-update", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/view-update.html"));
   });
 
 };

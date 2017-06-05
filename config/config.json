@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "mysql11",
-    "database": "blogger2",
+    "database": "roadie",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

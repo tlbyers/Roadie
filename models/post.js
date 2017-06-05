@@ -13,17 +13,16 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     }, 
     event_name: {
-      type: DataType.STRING,
-      allowNull: true
+      type: DataTypes.STRING
     },
     event_date:{
-      type: DataType.STRING
+      type: DataTypes.STRING
     },
     event_note: {
-      type:DataType.TEXT
+      type:DataTypes.TEXT
     },
     completed: {
-      type: Boolean,
+      type: DataTypes.BOOLEAN,
     }
 
   
