@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>CMS - Express</title>
+	<!-- Latest compiled and minified CSS & JS -->
+ 
+
+ 
+</head>
+
+<body>
+<!--nav button 1-->
+
+ <form action="/index">
+    <input type="submit" value="home" />
+</form>
+
+<!--nav button 2-->
+
+ <form action="/view-update">
+    <input type="submit" value="View / Update your places" />
+</form>
+
+<!--title -->
+
+ <h2> Add A New Place</h2>
+
+<!--submission form -->
+
+<form  id="cms">
+  <label for="place" form="form1">The part of world you intend to visit: </label>
+  <input type="text" name="place" id="place" value="place"><br>
+  <label for="event_place">A place you intend to visit: </label>
+  <input type="text" name="event_place" id="event_place" value="event_place"><br>
+  <label for="event_date"> On what day of your visit will you go there?  </label>
+  <input type="text" name="event_date" id="event_date" value="event_date"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+
+<!--This is a list of all the places that the user has entered so far.  
+Each place functions as a title for each itinerary-->
+
+
+<div class="blog-container">
+
+  </div>
+
+<!--
+Select a Place to View / Update
+
+Chicago
+
+New Orleans
+
+San Fran
+
+Durham-->
+
+<!--OR if nothing has been submitted then??? -->
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+  	<script src="js/post-api.js" type="text/javascript"></script>
+</body>
+</html>
