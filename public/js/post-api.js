@@ -2,7 +2,7 @@
 
   // Getting jQuery references to the post body, title, form, and author select
   
-  var eventPlace = $("#event_place"); // originally body
+  var event_place = $("#event_place"); // originally body
   var event_date = $("#event_date"); //originally title
   var cmsForm = $("#cms"); // the whole form holding body, title, author
   var place = $("#place"); //originally author id

@@ -1,16 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
     user_name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      type: DataTypes.STRING
     },
     place: {
       type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
     }, 
     event_name: {
       type: DataTypes.STRING
