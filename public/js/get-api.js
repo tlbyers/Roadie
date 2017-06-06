@@ -10,15 +10,11 @@
   // 1. This function grabs posts from the database and updates the view
 
   function getPosts(data) {
-    authorId = author || "";
-    if (authorId) {
-      authorId = "/?author_id=" + authorId;
-    }
-    $.get("/api/posts" + authorId, function(data) {
-      console.log("Posts", data);
+ 
+    $.get("/api/posts", function(data) {
       posts = data;
       if (!posts || !posts.length) {
-        displayEmpty(author);
+        displayEmpty();
       }
       else {
         initializeRows();
@@ -37,41 +33,64 @@
   }
 
   // 4. This function constructs a post's HTML
+  // post = the first object gotten from sequelize
+
   function createNewRow(post) {
-    var formattedDate = new Date(post.createdAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+    // var formattedDate = new Date(post.createdAt);
+    // formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
+
+
+// adding the paneling --- 
+
     var newPostPanel = $("<div>");
     newPostPanel.addClass("panel panel-default");
+
     var newPostPanelHeading = $("<div>");
     newPostPanelHeading.addClass("panel-heading");
+
+// adding the delete / edit buttons
+
     var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
+    deleteBtn.text("delete");
+    // deleteBtn.addClass("delete btn btn-danger");
     var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h2>");
-    var newPostDate = $("<small>");
-    var newPostAuthor = $("<h5>");
-    newPostAuthor.text("Written by: " + post.Author.name);
-    newPostAuthor.css({
-      float: "right",
-      color: "blue",
+    editBtn.text("edit");
+    // editBtn.addClass("edit btn btn-info");
+
+// adding the tags for the sql columns ---------------------
+   
+// var newPostDate = $("<p>");
+
+var eventDate = $("<p>");
+    eventDate.text("On: " + post.event_date);
+
+    var place = $("<p>");
+    place.text("Your Place: " + post.place);
+    place.css({
+      color: "black",
       "margin-top":
       "-10px"
     });
+
     var newPostPanelBody = $("<div>");
     newPostPanelBody.addClass("panel-body");
-    var newPostBody = $("<p>");
-    newPostTitle.text(post.title + " ");
-    newPostBody.text(post.body);
-    newPostDate.text(formattedDate);
-    newPostTitle.append(newPostDate);
-    newPostPanelHeading.append(deleteBtn);
-    newPostPanelHeading.append(editBtn);
-    newPostPanelHeading.append(newPostTitle);
-    newPostPanelHeading.append(newPostAuthor);
-    newPostPanelBody.append(newPostBody);
+  
+    var eventName = $("<p>");
+    eventName.text("Visit: " + post.event_name);
+   
+
+    // newPostDate.text(formattedDate);
+
+// append everything
+
+    // eventName.append(newPostDate);
+    newPostPanelHeading.append(eventDate);
+    newPostPanelHeading.append(place);
+
+    newPostPanelBody.append(eventName);
+    newPostPanelBody.append(deleteBtn);
+    newPostPanelBody.append(editBtn);
+    
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
     newPostPanel.data("post", post);
@@ -79,16 +98,11 @@
   }
 
     // 7. This function displays a messgae when there are no posts
-  function displayEmpty(id) {
-    var query = window.location.search;
-    var partial = "";
-    if (id) {
-      partial = " for Author #" + id;
-    }
+  function displayEmpty() {
     blogContainer.empty();
     var messageh2 = $("<h2>");
     messageh2.css({ "text-align": "center", "margin-top": "50px" });
-    messageh2.html("No posts yet" + partial + ", navigate <a href='/cms" + query +
+    messageh2.html("No posts yet, navigate <a href='/add" +
     "'>here</a> in order to get started.");
     blogContainer.append(messageh2);
   }

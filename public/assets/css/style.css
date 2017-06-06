@@ -34,7 +34,7 @@ img {
 }
 
 #stage {
-    background: url('/Users/BW/Desktop/Roadie/public/assets/img/landscape.jpg') center center no-repeat;
+    background: url('../img/landscape.jpg') center center no-repeat;
     background-size: cover;
     color: white;
     height: 100%;
