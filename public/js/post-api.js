@@ -1,8 +1,8 @@
-  $(document).ready(function() {
+ $(document).ready(function() {
 
   // Getting jQuery references to the post body, title, form, and author select
   
-  var event_place = $("#event_place"); // originally body
+  var event_name = $("#event_name"); // originally body
   var event_date = $("#event_date"); //originally title
   var cmsForm = $("#cms"); // the whole form holding body, title, author
   var place = $("#place"); //originally author id
@@ -27,7 +27,7 @@ $(cmsForm).on("submit", handleFormSubmit);
     var newPost = {
       event_date: event_date.val(),
     //   .val().trim(),
-      event_place: event_place.val(),
+      event_name: event_name.val(),
     //   .val().trim(),
       place: place.val()
     //   .val().trim()
