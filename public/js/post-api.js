@@ -2,54 +2,90 @@
 
   // Getting jQuery references to the post body, title, form, and author select
   
-  var event_name = $("#event_name"); // originally body
-  var event_date = $("#event_date"); //originally title
-  var cmsForm = $("#cms"); // the whole form holding body, title, author
-  var place = $("#place"); //originally author id
+      var event_name = $("#event_name"); // originally body
+     var for_date = $("#for"); // for date
+     var to_date = $("#to"); // to date
+     var cmsForm = $("#cms"); // the whole form holding body, title, author
+     var place = $("#place"); //originally author id
+
+
+     var dateFormat = "mm/dd/yy",
+         from = $("#from")
+         .datepicker({
+             defaultDate: "+1w",
+             changeMonth: true,
+             numberOfMonths: 2
+         })
+         .on("change", function() {
+             to.datepicker("option", "minDate", getDate(this));
+         }),
+         to = $("#to").datepicker({
+             defaultDate: "+1w",
+             changeMonth: true,
+             numberOfMonths: 2
+         })
+         .on("change", function() {
+             from.datepicker("option", "maxDate", getDate(this));
+         });
 
 
 
+     function getDate(element) {
+         var date;
+         date = $.datepicker.parseDate(dateFormat, element.value);
+         console.log("date is: ", date);
+         try {
 
-$(cmsForm).on("submit", handleFormSubmit);
+         } catch (error) {
+             date = null;
+         }
 
-// 1. A function for handling what happens when the form to create a new post is submitted
+         return date;
+     }
 
-  function handleFormSubmit(event) {
-    event.preventDefault();
+     $(cmsForm).on("submit", handleFormSubmit);
 
-    // Wont submit the post if we are missing a body, title, or author
+     // 1. A function for handling what happens when the form to create a new post is submitted
 
-    // if (!event_date.val().trim() || !event_place.val().trim() || !place.val()) {
-    //   return;
-    // }
+     function handleFormSubmit(event) {
+         event.preventDefault();
+         event.stopPropagation();
+         console.log("hi");
 
-    // Constructing a newPost object to hand to the database
-    var newPost = {
-      event_date: event_date.val(),
-    //   .val().trim(),
-      event_name: event_name.val(),
-    //   .val().trim(),
-      place: place.val()
-    //   .val().trim()
-    };
+         // Wont submit the post if we are missing a body, title, or author
 
-  // Run the submitpost function
+         // if (!event_date.val().trim() || !event_place.val().trim() || !place.val()) {
+         //   return;
+         // }
+
+         // Constructing a newPost object to hand to the database
+         var newPost = {
+             for_date: $("#for").val(),
+             to_date: $("#to").val(),
+             //   .val().trim(),
+             event_name: event_name.val(),
+             //   .val().trim(),
+             place: place.val()
+                 //   .val().trim()
+         };
+         console.log(newPost.to_date);
+         // Run the submitpost function
 
 
-if (newPost) {
-    submitPost(newPost);
-}
-  
+         if (newPost) {
+             submitPost(newPost);
+         }
 
+         return false;
 
-  }
+     }
 
 //////////////
 
   // 2. Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
     $.post("/api/posts", post, function() {
-      window.location.href = "/add";
+      // window.location.href = "/add";
     });
   }
-  } )
+  })
