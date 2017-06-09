@@ -84,8 +84,8 @@
 
   // 2. Submits a new post and brings user to blog page upon completion
   function submitPost(post) {
-    $.post("/api/posts", post, function() {
+    $.post("/api/posts", post).then(newPost);
       // window.location.href = "/add";
-    });
   }
-  })
+
+  });
