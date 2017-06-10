@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
   // Getting jQuery references to the post body, title, form, and author select
   
@@ -6,7 +6,10 @@ $(document).ready(function() {
   var event_date = $("#event_date"); //originally title
   var cmsForm = $("#cms"); // the whole form holding body, title, author
   var place = $("#place"); //originally author id
-
+  var postCategorySelect = $("#category");
+    
+ // Click events for the edit and delete buttons
+ $(document).on("click", "button.delete", handlePostDelete);
 
 
 
@@ -52,4 +55,29 @@ if (newPost) {
       window.location.href = "/add";
     });
   }
-  } )
+  
+  // This function does an API call to delete posts
+  function deletePost(id) {
+    $.ajax({
+      method: "DELETE",
+      url: '/api/posts2/' + id
+    }).then(function () {
+        console.log("We delete")
+        // getPosts(postCategorySelect.val());
+        window.location.href = "/add";
+    });
+  }
+
+     // This function figures out which post we want to delete and then calls
+      // deletePost
+      function handlePostDelete(event) {
+        event.preventDefault();
+        // event.stopPropagation();
+        console.log("I am here!")
+        var currentPost = $(this)
+          .parent()
+          .parent()
+          .data("post");
+        deletePost(currentPost.id);
+      }
+  // } );

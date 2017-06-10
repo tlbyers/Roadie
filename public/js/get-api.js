@@ -52,6 +52,7 @@
 
     var deleteBtn = $("<button>");
     deleteBtn.text("delete");
+    deleteBtn.click(handlePostDelete);
     // deleteBtn.addClass("delete btn btn-danger");
     var editBtn = $("<button>");
     editBtn.text("edit");

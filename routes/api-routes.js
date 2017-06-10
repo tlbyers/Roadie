@@ -17,9 +17,22 @@ module.exports = function(app) {
 
   app.post("/api/posts", function(req, res) {
     db.Post.create(req.body).then(function(data) {
+      console.log("I am posting!")
       res.json(data);
       // res.redirect("/");
     });
   });
 
-}
+// DELETE route for deleting posts
+  app.delete("/api/posts2/:id", function(req, res) {
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(data) {
+      console.log("Ryo's Log")
+      res.json(data);
+    });
+  });
+};
