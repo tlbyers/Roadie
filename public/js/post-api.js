@@ -1,4 +1,4 @@
- $(document).ready(function() {
+$(document).ready(function() {
 
   // Getting jQuery references to the post body, title, form, and author select
   
@@ -60,8 +60,8 @@
 
          // Constructing a newPost object to hand to the database
          var newPost = {
-             for_date: $("#for").val(),
-             to_date: $("#to").val(),
+            //  for_date: $("#for").val(),
+            //  to_date: $("#to").val(),
              //   .val().trim(),
              event_name: event_name.val(),
              //   .val().trim(),
@@ -73,19 +73,16 @@
 
 
          if (newPost) {
-             submitPost(newPost);
+                $.post("/api/posts", newPost, function() {
+          notNew = true;
+          //  createForm2(place, days);
+        });
          }
 
          return false;
 
      }
 
-//////////////
-
-  // 2. Submits a new post and brings user to blog page upon completion
-  function submitPost(post) {
-    $.post("/api/posts", post).then(newPost);
-      // window.location.href = "/add";
-  }
+ 
 
   });
