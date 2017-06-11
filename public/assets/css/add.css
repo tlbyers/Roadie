@@ -1,0 +1,29 @@
+.jumbotron {
+    background-color: #fff;
+    background-image: url('../img/feetroad.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+}
+.jumbotron .container {
+    max-width: 70rem;
+  
+    background: rgba(255,255,255, 0.2);
+    padding: 2rem;
+    color: white;
+}
+.jumbotron p {
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    text-align: center;
+    font-weight: 400;
+}
+.jumbotron h1 {
+    color: white;
+    font-size: 60px;
+}
+
+.col-md-2 {
+    width: initial;
+
+}
