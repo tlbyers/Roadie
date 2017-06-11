@@ -54,9 +54,9 @@
     deleteBtn.text("delete");
     deleteBtn.click(handlePostDelete);
     // deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("edit");
-    // editBtn.addClass("edit btn btn-info");
+    var directionBtn = $("<button>");
+    directionBtn.text("directios");
+    // directionBtn.addClass("edit btn btn-info");
 
 // adding the tags for the sql columns ---------------------
    
@@ -90,7 +90,7 @@ var eventDate = $("<p>");
 
     newPostPanelBody.append(eventName);
     newPostPanelBody.append(deleteBtn);
-    newPostPanelBody.append(editBtn);
+    newPostPanelBody.append(directionBtn);
     
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
