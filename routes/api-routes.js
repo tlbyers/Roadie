@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
 
  
-// This grabs all the api/posts, which jquery will then insert into the "blog-container" class in add.html 
+// GET ALL POSTS / then insert into the "blog-container" class in add.html 
 
   app.get("/api/posts", function(req, res) {
     db.Post.findAll({
@@ -11,14 +11,21 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-// 
-app.post("/api/places", function(req,res) {
-  db.Post.findAll({
 
-  }).then(function(data) {
+// get only a certain id
+
+app.get("/api/posts3/:id", function(req, res) {
+  db.Post.findAll({
+    where: {
+      id : req.params.id
+    }
+  })
+  .then(function(data){
     res.json(data);
   })
-})
+
+
+
 
 // Jquery grabs data from form and sends it here: /api/posts, which then creates it on the database 
 
