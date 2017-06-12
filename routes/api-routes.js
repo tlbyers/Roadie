@@ -24,6 +24,7 @@ app.get("/api/posts3/:id", function(req, res) {
     res.json(data);
   })
 
+})
 
 
 

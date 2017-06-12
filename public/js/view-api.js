@@ -4,7 +4,9 @@ var placesObj = {};
 var list = [];
 var main_place;
 var z
+var a
 var dates=[]
+var postsToAdd = [];
 $(document).ready(function() {
 
   //this button is in the view-update.html.  this whole file refers to view-update.html
@@ -105,36 +107,105 @@ function holler2(z) {
 //     // window.location.href = "/add";
 //   });
 
-// This grabs all the rows that have same begin date - 
+// This grabs all the rows that have same begin date - --------------
+
+blogContainer.empty();
+$("#title").empty();
 
 $.get("/api/posts", function(data){
   console.log(data)
   for (var i=0; i<data.length; i++){
     if (data[i].event_date==z) {
-      dates.push(data[i])
+      // dates.push(data[i])
+      postsToAdd.push(createNewRow(data[i]));
     }
   };
+blogContainer.append(postsToAdd);
 
-console.log(dates)
-blogContainer.empty();
+//////////////////////////////////////-----------------
 
+function createNewRow(post) {
+ 
+    var newPostPanel = $("<div>");
+    newPostPanel.addClass("panel panel-default").addClass("col-sm-4").attr("day", a);
+
+    var newPostPanelHeading = $("<div>");
+    newPostPanelHeading.addClass("panel-heading").attr("day", a);
+
+ var newPostPanelBody = $("<div>");
+    newPostPanelBody.addClass("panel-body").attr("day", a);
+
+// adding the delete / edit buttons
+     var form2=$("<form>").attr("id", "form2");
+  var label=$("<label>").attr("for", "event").text("Where to visit?");
+  var input=$("<input>").attr({"type": "text", "name":"event", "id": "event"});
+  var sub=$("<input>").attr({"type":"submit", "value":"submit"});
+  label.append(sub);
+  label.append(input);
+  form2.append(label)
+
+    var deleteBtn = $("<button>");
+    deleteBtn.text("delete");
+    // deleteBtn.addClass("delete btn btn-danger");
+    var editBtn = $("<button>");
+    editBtn.text("edit");
+    // editBtn.addClass("edit btn btn-info");
+
+
+var eventDate = $("<p>");
+eventDate.text(post.event_date)
+var checkBox =$("<div>").addClass("checkbox")
+var checkLabel =$("<label>").html("<input type='checkbox'>").text(post.event_name)
+
+// var checkInput = $("<input>").attr("type", "checkbox");
+// checkLabel.append(checkInput);
+checkBox.append(checkLabel);
+
+newPostPanelBody.append(checkBox);
+    // var eventName = $("<p>");
+    // eventName.text("Visit: " + post.event_name);
+var title=$("<h1>").text(post.place).css("text-align", "center")  
+$("#title").append(title);
+
+    // newPostDate.text(formattedDate);
+
+// append everything
+
+    // eventName.append(newPostDate);
+    newPostPanelHeading.append(eventDate);
+    // newPostPanelHeading.append(place);
+
+    // newPostPanelBody.append(eventName);
+    newPostPanelBody.append(form2);
+    newPostPanelBody.append(deleteBtn);
+    newPostPanelBody.append(editBtn);
+    
+    newPostPanel.append(newPostPanelHeading);
+    newPostPanel.append(newPostPanelBody);
+    newPostPanel.data("post", post);
+    return newPostPanel;
+  }
+
+ 
 // This displays them --
 
 
-for (i = 0; i < dates.length; i++) {
-      row = $("<div>").addClass("col-sm-offset-1")
-      line2 = $("p").html("Place: " + dates[i].place + "<br> " +
-          "Spot: " + dates[i].event_name + "<br>" + "Day: " + dates[i].event_date+ "<br>" + "Completed? " + dates[i].completed);
+// for (i = 0; i < dates.length; i++) {
+//       row = $("<div>").addClass("col-sm-offset-1")
+//       line2 = $("p").html("Place: " + dates[i].place + "<br> " +
+//           "Spot: " + dates[i].event_name + "<br>" + "Day: " + dates[i].event_date+ "<br>" + "Completed? " + dates[i].completed);
          
-      row.append(line2);
-      blogContainer.append(row);
+//       row.append(line2);
+//       blogContainer.append(row);
+   /////////////////////
    
-   
-  }
+  // } // for loop ends
 
 
-})
+
+
+}) // get ends
  
-}
+} // holler 2 ends here.... 
 
 }); //end page
