@@ -1,4 +1,4 @@
-  $(document).ready(function() {
+ $(document).ready(function() {
   
 
   var blogContainer = $(".blog-container");
@@ -54,11 +54,10 @@
     deleteBtn.text("delete");
     deleteBtn.click(handlePostDelete);
     // deleteBtn.addClass("delete btn btn-danger");
-    var directionBtn = $("<button>");
-    directionBtn.text("directios");
-    // directionBtn.addClass("edit btn btn-info");
 
-// adding the tags for the sql columns ---------------------
+//     var directionBtn = $("<button>");
+
+// // adding the tags for the sql columns ---------------------
    
 
 var eventDate = $("<p>");
@@ -89,8 +88,7 @@ var eventDate = $("<p>");
 
     newPostPanelBody.append(eventName);
     newPostPanelBody.append(deleteBtn);
-    newPostPanelBody.append(directionBtn);
-    
+   
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
     newPostPanel.data("post", post);
