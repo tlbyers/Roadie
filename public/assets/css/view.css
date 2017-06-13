@@ -1,13 +1,12 @@
 .jumbotron {
     background-color: #fff;
-    background-image: url('../img/feetroad.jpg');
+    background-image: url('../img/curveroad.jpg');
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center;
     background-size: cover;
 }
 .jumbotron .container {
     max-width: 70rem;
-  
     background: rgba(255,255,255, 0.2);
     padding: 2rem;
     color: white;
@@ -21,17 +20,10 @@
 .jumbotron h1 {
     color: white;
     font-size: 60px;
+    text-align: center;
 }
 
-h2 {
-   
+.col-md-2 {
+    width: initial;
 
-}
-
-.btn-success {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    float: none;
-    margin-left: 500px;
 }
