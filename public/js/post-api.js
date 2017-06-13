@@ -4,9 +4,18 @@
 
 var event_name = $("#event_name"); // originally body
 var event_date = $("#event_date"); //originally title
+var begin_date = $("#begin_date");
 var cmsForm = $("#cms"); // the whole form holding body, title, author
 var place = $("#place"); //originally author id
 var postCategorySelect = $("#category");
+
+$(function datePicker() {
+      $(".datepicker").datepicker({
+          showButtonPanel: true
+    
+        });
+    });
+
 
 // Click events for the edit and delete buttons
 $(document).on("click", "button.delete", handlePostDelete);
@@ -20,6 +29,7 @@ function handleFormSubmit(event) {
 
   // Constructing a newPost object to hand to the database
   var newPost = {
+    begin_date: begin_date.val(),
     event_date: event_date.val(),
     //   .val().trim(),
     event_name: event_name.val(),
@@ -64,4 +74,7 @@ function handlePostDelete(event) {
   var currentPost = $(this).parent().parent().data("post");
   deletePost(currentPost.id);
 }
+
+
+
 // } );
