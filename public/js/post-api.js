@@ -44,6 +44,7 @@ function submitPost(post) {
   });
 }
 
+
 // 3 This function does an API call to delete posts
 function deletePost(id) {
   $.ajax({
@@ -64,4 +65,3 @@ function handlePostDelete(event) {
   var currentPost = $(this).parent().parent().data("post");
   deletePost(currentPost.id);
 }
-// } );

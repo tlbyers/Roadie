@@ -3,7 +3,7 @@ var db = require("../models");
 module.exports = function(app) {
 
  
-// This grabs all the api/posts, which jquery will then insert into the "blog-container" class in add.html 
+// GET ALL POSTS / then insert into the "blog-container" class in add.html 
 
   app.get("/api/posts", function(req, res) {
     db.Post.findAll({
