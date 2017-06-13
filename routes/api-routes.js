@@ -11,7 +11,14 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+// 
+app.post("/api/places", function(req,res) {
+  db.Post.findAll({
 
+  }).then(function(data) {
+    res.json(data);
+  })
+})
 
 // Jquery grabs data from form and sends it here: /api/posts, which then creates it on the database 
 
@@ -22,6 +29,8 @@ module.exports = function(app) {
       // res.redirect("/");
     });
   });
+
+
 
 // DELETE route for deleting posts
   app.delete("/api/posts2/:id", function(req, res) {

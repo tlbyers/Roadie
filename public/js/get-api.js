@@ -60,7 +60,6 @@
 
 // adding the tags for the sql columns ---------------------
    
-// var newPostDate = $("<p>");
 
 var eventDate = $("<p>");
     eventDate.text("On: " + post.event_date);
@@ -103,8 +102,7 @@ var eventDate = $("<p>");
     blogContainer.empty();
     var messageh2 = $("<h2>");
     messageh2.css({ "text-align": "center", "margin-top": "50px" });
-    messageh2.html("No posts yet, navigate <a href='/add" +
-    "'>here</a> in order to get started.");
+    messageh2.html("Plan your itinerary....");
     blogContainer.append(messageh2);
   }
 
