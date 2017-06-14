@@ -11,15 +11,15 @@ module.exports = function(app) {
       res.json(data);
     });
   });
-// 
-app.post("/api/places", function(req,res) {
+// get only a certain id
+
+app.get("/api/posts3/:id", function(req, res) {
   db.Post.findAll({
 
   }).then(function(data) {
     res.json(data);
   })
 })
-
 // Jquery grabs data from form and sends it here: /api/posts, which then creates it on the database 
 
   app.post("/api/posts", function(req, res) {
