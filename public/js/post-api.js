@@ -16,6 +16,7 @@ $(function datePicker() {
         });
     });
 
+
 // Click events for the edit and delete buttons
 $(document).on("click", "button.delete", handlePostDelete);
 
@@ -52,6 +53,7 @@ function submitPost(post) {
     window.location.href = "/add";
   });
 }
+
 // 3 This function does an API call to delete posts
 function deletePost(id) {
   $.ajax({
@@ -63,6 +65,7 @@ function deletePost(id) {
     window.location.href = "/add";
   });
 }
+
 // 4 This function figures out which post we want to delete and then calls deletePost
 function handlePostDelete(event) {
   event.preventDefault();
@@ -71,3 +74,7 @@ function handlePostDelete(event) {
   var currentPost = $(this).parent().parent().data("post");
   deletePost(currentPost.id);
 }
+
+
+
+// } );

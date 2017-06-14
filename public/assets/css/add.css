@@ -23,10 +23,7 @@
     font-size: 60px;
 }
 
-.btn-success {
-    color: #fff;
-    background-color: #5cb85c;
-    border-color: #4cae4c;
-    float: none;
-    margin-left: 500px;
+.col-md-2 {
+    width: initial;
+
 }
