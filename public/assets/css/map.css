@@ -64,6 +64,7 @@
         width: 400px;
       }
 
+
       #pac-input.controls{
         margin-top: 5px;
         width:50%;
@@ -71,6 +72,7 @@
 
       }
       
+
 
       #pac-input:focus {
         border-color: #4d90fe;

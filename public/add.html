@@ -12,6 +12,12 @@
  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
   crossorigin="anonymous"></script>  
+
+
+<!-- jQuery UI css calendar -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
 <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
 <!--custom css-->
@@ -53,25 +59,37 @@
      <form  id="cms">
       <div class="row">
         <div class="col-md-4">
-          <h2>Insert city and state that you plan to visit:</h2>
-          <label for="place" form="form1"></label>
+          <h2>Where are you going?</h2>
+          <label for="place" form="form1">Insert city and state that you plan to visit:</label>
              <input type="text" name="place" id="place">
+             <!--<input id="pac-input" class="controls" type="text" placeholder="Search Box">-->
         </div>  
-
-      <div class="row">
+    
+       
         <div class="col-md-4">
-          <h2>Insert dates that you plan on visiting:</h2>
-            <label for="event_date" form="form1"></label>
-              <input type="text" name="event_date" id="event_date"> 
+           <h2>First day of the trip?  </h2>
+          <label for="begin_date"> Insert the name of an attraction:</label>
+            <input type="text" name="begin_date" id="begin_date" class="datepicker">
+          
         </div>
+        </div>
+    
+
        <div class="row">
         <div class="col-md-4">
-          <h2>Insert name of place that you plan to visit:</h2>
-          <label for="event_place" form="form1"></label>
-            <input type="text" name="event_place" id="event_place">
+         <h2>Which spots will you visit? </h2>
+          <label for="event_name"> Insert the name of an attraction:</label>
+            <input type="text" name="event_name" id="event_name">
         </div>
-      </div>  
-      <br>
+      
+
+       
+          <div class="col-md-4">
+          <h2>When are you going to this spot?</h2>
+            <label for="event_date" form="form1">Insert the dates that you plan on visiting:</label>
+              <input type="text" name="event_date" id="event_date" class="datepicker"> 
+        </div> 
+      
 <!--THE SUBMIT BUTTON THAT WORKS.......FINALLY!-->
       <div class="row">
                         <div class="col-sm-12">
@@ -79,6 +97,7 @@
 
                         </div>
                     </div>
+
     </form>
     <hr>
 
@@ -86,9 +105,24 @@
     <div class="row">
         <div class="col-md-6">
       <!--this is the map stuff-->
+
         <input id="pac-input" class="controls" type="text" placeholder="Get Directions">
+
+
+   
+<!--*************** THIS INPUT NEEDS TO BE MOVED TO ID=PLACE IN THE FORMS...-->
+
+           <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+
             <div id="map"></div>
+
+            <!--JAVASCRIPT BEGINS HERE-->
+
+
             <script>
+
+             
               //google maps api - auto complete - hybrid map 
               function initAutocomplete() {
                 var map = new google.maps.Map(document.getElementById('map'), {
@@ -97,8 +131,9 @@
                   mapTypeId: 'roadmap'
                 });
 
-                // Create the search box and link it to the UI element.
-                var input = document.getElementById('pac-input');
+
+/// SEARCH BOX BEGINS HERE
+
                 var searchBox = new google.maps.places.SearchBox(input);
                 map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -107,7 +142,11 @@
                   searchBox.setBounds(map.getBounds());
                 });
 
+ 
                 var markers = [];
+
+// $("#place").html("#pac-input")
+
                 // Listen for the event fired when the user selects a prediction and retrieve
                 // more details for that place.
                 searchBox.addListener('places_changed', function() {
@@ -157,6 +196,8 @@
                 });
               }
 
+
+
             </script>
         </div>
  <!--input field for iteniary-->
@@ -177,9 +218,18 @@
     </div> <!-- /container -->
 
 <!--Scripts-->
-	<script src="https://code.jquery.com/jquery.js"></script>
-  	<script src="js/post-api.js" type="text/javascript"></script>
+
+
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <!-- jQuery UI Calendar JS -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script src="js/post-api.js" type="text/javascript"></script>
 	<script src="js/get-api.js" type="text/javascript"></script>
+
+
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </body>
