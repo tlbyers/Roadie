@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     event_date:{
-      type: DataTypes.STRING
+      type: DataTypes.DATE
     },
     event_note: {
       type:DataTypes.TEXT
