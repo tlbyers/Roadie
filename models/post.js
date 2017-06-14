@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
-    begin_date: {
-      type: DataTypes.STRING
-    },
-    end_date: {
-      type: DataTypes.STRING
-    },
+    // begin_date: {
+    //   type: DataTypes.STRING
+    // },
+    // end_date: {
+    //   type: DataTypes.STRING
+    // },
     place: {
       type: DataTypes.STRING
     }, 
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING
     },
     event_date:{
-      type: DataTypes.STRING
+      type: DataTypes.DATE
     },
     event_note: {
       type:DataTypes.TEXT
