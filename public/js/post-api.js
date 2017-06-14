@@ -23,11 +23,11 @@ $(function datePicker() {
 // $(document).on("click", "button.delete", handlePostDelete);
 
 // $(cmsForm).on("submit", handleFormSubmit);
-$("#cms").on("submit", handleFormSubmit(allPost));
+$("#cms").on("submit", handleFormSubmit);
 
 // 1. A function for handling what happens when the form to create a new post is submitted
 
-function handleFormSubmit(allPost) {
+function handleFormSubmit(event) {
   event.preventDefault();
 
   // Constructing a newPost object to hand to the database
