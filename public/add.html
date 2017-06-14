@@ -13,10 +13,8 @@
   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
   crossorigin="anonymous"></script>  
 
-
 <!-- jQuery UI css calendar -->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 
 <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>    
@@ -35,7 +33,6 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="roadielanding" aria-expanded="false">
       </button>
     </div>
-
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="landNavbar">
       <ul class="nav navbar-nav">
@@ -46,7 +43,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -58,38 +54,25 @@
     <div class="container">
      <form  id="cms">
       <div class="row">
-        <div class="col-md-4">
-          <h2>Where are you going?</h2>
-          <label for="place" form="form1">Insert city and state that you plan to visit:</label>
-             <input type="text" name="place" id="place">
-             <!--<input id="pac-input" class="controls" type="text" placeholder="Search Box">-->
-        </div>  
-    
-       
-        <div class="col-md-4">
-           <h2>First day of the trip?  </h2>
-          <label for="begin_date"> Insert the name of an attraction:</label>
-            <input type="text" name="begin_date" id="begin_date" class="datepicker">
-          
-        </div>
-        </div>
-    
-
-       <div class="row">
+        
         <div class="col-md-4">
          <h2>Which spots will you visit? </h2>
           <label for="event_name"> Insert the name of an attraction:</label>
             <input type="text" name="event_name" id="event_name">
         </div>
-      
 
-       
-          <div class="col-md-4">
-          <h2>When are you going to this spot?</h2>
+        <div class="col-md-4">
+
+          <h2>When are you going?</h2>
             <label for="event_date" form="form1">Insert the dates that you plan on visiting:</label>
-              <input type="text" name="event_date" id="event_date" class="datepicker"> 
+              <input type="text" name="event_date" id="datepicker"> 
         </div> 
-      
+          <h2>Insert name of place that you plan to visit:</h2>
+          <label for="event_place" form="form1"></label>
+            <input type="text" name="event_place" id="event_place">
+        </div>
+      </div>  
+      <br>
 <!--THE SUBMIT BUTTON THAT WORKS.......FINALLY!-->
       <div class="row">
                         <div class="col-sm-12">
@@ -100,7 +83,6 @@
 
     </form>
     <hr>
-
       <div class="container">      
     <div class="row">
         <div class="col-md-6">
@@ -133,16 +115,13 @@
 
 
 /// SEARCH BOX BEGINS HERE
-
                 var searchBox = new google.maps.places.SearchBox(input);
                 map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
                 // Bias the SearchBox results towards current map's viewport.
                 map.addListener('bounds_changed', function() {
                   searchBox.setBounds(map.getBounds());
                 });
 
- 
                 var markers = [];
 
 // $("#place").html("#pac-input")
@@ -151,17 +130,14 @@
                 // more details for that place.
                 searchBox.addListener('places_changed', function() {
                   var places = searchBox.getPlaces();
-
                   if (places.length == 0) {
                     return;
                   }
-
                   // Clear out the old markers.
                   markers.forEach(function(marker) {
                     marker.setMap(null);
                   });
                   markers = [];
-
                   // For each place, get the icon, name and location.
                   var bounds = new google.maps.LatLngBounds();
                   places.forEach(function(place) {
@@ -176,7 +152,6 @@
                       anchor: new google.maps.Point(17, 34),
                       scaledSize: new google.maps.Size(25, 25)
                     };
-
                     // Create a marker for each place.
                     markers.push(new google.maps.Marker({
                       map: map,
@@ -184,7 +159,6 @@
                       title: place.name,
                       position: place.geometry.location
                     }));
-
                     if (place.geometry.viewport) {
                       // Only geocodes have viewport.
                       bounds.union(place.geometry.viewport);
@@ -195,8 +169,6 @@
                   map.fitBounds(bounds);
                 });
               }
-
-
 
             </script>
         </div>
@@ -216,7 +188,6 @@
         <p>&copy; 2016 Company, Inc.</p>
       </footer>
     </div> <!-- /container -->
-
 <!--Scripts-->
 
 
@@ -232,5 +203,7 @@
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+  <!-- jQuery UI Calendar JS -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </body>
 </html>
