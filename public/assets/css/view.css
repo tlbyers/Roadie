@@ -2,6 +2,12 @@
  
 input[type="text"], textarea {
 
-  background-color : #DCDCDC
+  background-color : #DCDCDC; 
+  width: 50%;
 
 }
+
+/*hr {
+color: black
+
+}*/
