@@ -39,7 +39,7 @@
 console.log(postsToAdd)
 // displaying posts to add to display - 
 
-    blogContainer.prepend(postsToAdd);
+    blogContainer.html(postsToAdd);
  
  } // end initialize rows --FUNCTION ENDS
 
@@ -63,6 +63,8 @@ console.log(postsToAdd)
       var newPostPanelBody = $("<div>");
     newPostPanelBody.addClass("panel-body");
 
+  var newPostPanelFooter = $("<div>").addClass("panel-footer");
+
 // adding the delete / edit buttons
 
     var deleteBtn = $("<button>");
@@ -75,11 +77,12 @@ console.log(postsToAdd)
 
 // adding the tags for the sql columns ---------------------
    
+var header = $("<p>").text("Trip to  " + post.place + " : " + post.begin_date + " - " + post.end_date + ".");
+ 
 
-var header = $("<p>").text("On: " + post.event_date + " you will arrive in " +post.place + ".");
+var body = $("<p>").text("Visit " + post.event_name+ " on " +post.event_date + ".");
 
-var body = $("<p>").text("Here, you will visit " + post.event_name + " on " + post.begin_date + ".");
-   
+var footer = $("<p>").text("Notes: " + post.event_note)
 
     // newPostDate.text(formattedDate);
 
@@ -89,12 +92,14 @@ var body = $("<p>").text("Here, you will visit " + post.event_name + " on " + po
     newPostPanelHeading.append(header);
     // newPostPanelHeading.append(place);
 
-    newPostPanelBody.append(body);
-    newPostPanelBody.append(deleteBtn);
+    newPostPanelHeading.append(body);
+    newPostPanelFooter.append(deleteBtn);
+    newPostPanelBody.append(footer);
     // newPostPanelBody.append(editBtn);
     
     newPostPanel.append(newPostPanelHeading);
     newPostPanel.append(newPostPanelBody);
+    newPostPanel.append(newPostPanelFooter);
     newPostPanel.data("post", post);
     return newPostPanel;
   }

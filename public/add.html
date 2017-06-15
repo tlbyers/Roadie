@@ -37,6 +37,7 @@
     <div class="collapse navbar-collapse" id="landNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/index">Home<span class="sr-only">(current)</span></a></li>
+
         <li> <a href="/add.html"> Add a new place </a></li>
         <li> <a href="/view-update.html"> View / Update new places </a></li>
       </ul>
@@ -53,8 +54,15 @@
 <!--Form to capture user input-->
     <div class="container">
      <form  id="cms">
+
       <div class="row">
-        
+
+        <div class="col-md-4">
+          <h2>Where are you going?</h2>
+          <label for="place" form="form1">Insert city and state that you plan to visit:</label>
+             <input type="text" name="place" id="place">
+             <!--<input id="pac-input" class="controls" type="text" placeholder="Search Box">-->
+      </div>
         <div class="col-md-4">
          <h2>Which spots will you visit? </h2>
           <label for="event_name"> Insert the name of an attraction:</label>
@@ -63,10 +71,40 @@
 
         <div class="col-md-4">
 
+
           <h2>When are you going?</h2>
+
+         <h2>Any notes? </h2>
+          <label for="event_note"> Insert notes::</label><br>
+            <input type="text" name="event_note" id="event_note">
+        </div>
+      
+       </div>
+      
+<div class="row">
+       
+     
+
+               <div class="col-md-4">
+           <h2>First day of the trip?  </h2>
+          <label for="begin_date">  </label>
+            <input type="text" name="begin_date" id="begin_date" class="datepicker">
+          
+        </div>
+
+          <div class="col-md-4">
+           <h2>Last day of the trip?  </h2>
+          <label for="end_date"> Insert the name of an attraction:</label>
+            <input type="text" name="end_date" id="end_date" class="datepicker">
+          
+        </div>
+             <div class="col-md-4">
+          <h2>When are you going to this spot?</h2>
+
             <label for="event_date" form="form1">Insert the dates that you plan on visiting:</label>
               <input type="text" name="event_date" id="datepicker"> 
         </div> 
+
           <h2>Insert name of place that you plan to visit:</h2>
           <label for="event_place" form="form1"></label>
             <input type="text" name="event_place" id="event_place">
@@ -82,6 +120,18 @@
                     </div>
 
     </form>
+
+</div>
+      
+<!--THE SUBMIT BUTTON THAT WORKS.......FINALLY!-->
+      
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-success" id="submit">Create Itinerary</button>
+                        </div>
+
+                            </form>
+                  </div>
+
     <hr>
       <div class="container">      
     <div class="row">

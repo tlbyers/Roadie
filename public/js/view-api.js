@@ -11,11 +11,27 @@ var datesArr = [];
 var postArr = [];
 var viewObj = {};
 var b = 0;
+var drop = $("#drop")
+var event_note = $("#event_note");
+var event_date = $("#event_date");
+var event_name = $("#event_name");
+    var allPost = {};
+
+  $(function datePicker() {
+      $(".datepicker").datepicker({
+          showButtonPanel: true
+    
+        });
+    });
+
+
 $(document).ready(function() {
 
   //"View-all-places" button in view-update.html, which returns user to VIEW-ALL-CITIES
 
- 
+
+
+ $("#addMore").hide();
 
   var blogContainer = $("#container");
   var posts;
@@ -186,14 +202,14 @@ $("#title").text("Which date in " + list[x] + "?");
 
     if (b === 0) {
       var title = $("<h1>")
-        .text(post[0].place + "  " + post[0].begin_date)
+        .text(post[0].place + " : " + post[0].begin_date + " - " + post[0].end_date)
         .css("text-align", "center");
       $("#title").append(title);
       b++;
     }
 
     ///
-    var allPost = {};
+
     allPost[post[0].event_date] = [post[0]];
 
     /// this creates  an allpost - 2 sets of data
@@ -259,7 +275,8 @@ $("#title").text("Which date in " + list[x] + "?");
         // event.append(deleteBtn)
         
         
-        newPostPanelBody.append(allPost[listing[i]][y].event_name ).css("font-size", "20px");
+        newPostPanelBody.append(allPost[listing[i]][y].event_name + " - " + "</br>" ).css("font-size", "20px");
+        newPostPanelBody.append(allPost[listing[i]][y].event_note ).css({"font-size": "20px", "margin-left": "10px"});
         // newPostPanelBody.append(deleteBtn)
         newPostPanelBody.append("<br><br>")
         // newPostPanelBody.append(event)
@@ -269,16 +286,8 @@ $("#title").text("Which date in " + list[x] + "?");
 
       // add notes? 
 
-      var form2=$("<form>").attr("id", "form2");
-      var label=$("<label>").attr("for", "event").text("Notes: ");
-      var input=$("<input>").attr({"type": "text", "name":"event", "id": "event"});
-      var sub=$("<input>").attr({"type":"submit", "value":"submit"});
-      
-      label.append(input);
-      label.append(sub);
-      form2.append(label)
-      newPostPanelBody.append(form2)
-
+    
+ 
 
 
       // // deleteBtn.addClass("delete btn btn-danger");
@@ -304,19 +313,144 @@ $("#title").text("Which date in " + list[x] + "?");
     //   newPostPanel.data("post", post);
 }
 
-$("#addMore").html("<hr>").css("border", "1px solid black")
-var question= ["Add another event", "Add another date"]
-for (i=0; i<2; i++) {
-var form = $("<form>")
-var label = $("<label>")
-label.text(question[i])
-form.append(label);
-var input = $("<input>")
-input.css("background-color", "#DCDCDC")
-label.append(input)
-$("#addMore").append(form);
 
+/////////////////////////////////// show
+
+ $("#addMore").show();
+
+
+
+$("#cms").on("submit", handleFormSubmit());
+
+
+
+function handleFormSubmit() {
+  event.preventDefault();
+ 
+// console.log(allPost[listing[0]][0].place)
+  // Constructing a newPost object to hand to the database
+  var newPost = {
+    
+    place: allPost[listing[0]][0].place,
+
+    begin_date: allPost[listing[0]][0].begin_date,
+
+    end_date: allPost[listing[0]][0].end_date,
+
+    event_note: $("#event_note").val(),
+    
+    event_date: event_date.val(),
+    
+    event_name: event_name.val(),
+  
+  };
+
+  // Run the submitpost function
+
+  if (newPost) {
+    submitPost(newPost);
+  }
 }
+
+//////////////
+
+// 2. Submits a new post and brings user to blog page upon completion
+function submitPost(post) {
+  $.post("/api/posts", post, function() {
+    // window.location.href = "/view-update";
+  });
+}
+
+
+
+// var event_name, event_date, event_note
+
+// $("#addMore").html("<hr>").css("border", "1px solid black").text("Add another event?")
+
+// var question= ["Event:", "Date:   ", "Notes:"]
+// var mark = [event_name, event_date, event_note]
+
+
+// var form = $("<form>").attr("id", "add");
+
+// for (i=0; i<question.length; i++) {
+
+
+// var label=$("<label>").attr("for", mark[i]).text(question[i])
+
+
+
+// if (i===2) {
+//   var input=$("<input>").addClass("datepicker").attr({"type": "text", "name":mark[i], "id": mark[i]}).css("background-color", "#DCDCDC")
+// }
+// else {
+//   var input=$("<input>").attr({"type": "text", "name":mark[i], "id": mark[i]}).css("background-color", "#DCDCDC")
+// }
+// label.append(input)
+
+// form.append(label);
+
+
+// }
+
+
+//  var sub=$("<input>").attr({"type":"submit", "value":"ADD"});
+//   label.append(sub);
+//   $("#addMore").append(form);
+
+
+////////////////
+  // var form2=$("<form>")
+  //     
+  //     
+  //     var sub=$("<input>").attr({"type":"submit", "value":"submit"});
+      
+  //     label.append(input);
+  //     label.append(sub);
+  //     form2.append(label)
+  //     newPostPanelBody.append(form2)
+
+
+
+///////////////////DROP DOWN MENU
+
+drop.html("<br><br>")
+
+var dropdown =$("<div>").addClass("dropdown");
+var dropbutton = $("<button>").addClass("btn btn-secondary dropdown-toggle").attr({"type": "button", "id" : "dropdownMenuButton", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false"}).text("Add Notes?")
+var pre_list = $("<div>").addClass("dropdown-menu").attr("aria-labelledby", "dropdownMenuButton")
+var anchor
+var how = Object.keys(allPost);
+
+dropdown.append(dropbutton);
+dropdown.append(pre_list);
+// allPost[date[row-object]].event... 
+console.log(how)
+console.log(allPost[listing])
+for (var i=0; i<how.length; i++) {
+
+for (var m=0; m<allPost[listing[i]].length; m++){
+  
+  anchor = $("<a>").addClass("dropdown-item").attr("href", "#").text(allPost[listing[i]][m].event_name)
+  console.log(allPost[listing[i]][m])
+  pre_list.append(anchor);
+
+} //inner loop
+
+}//outerloop
+
+drop.append(dropdown);
+
+/*<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+</div>*/
 
 // .append("<button>").attr("type", "submit");
 
