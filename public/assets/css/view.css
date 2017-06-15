@@ -31,6 +31,11 @@ input[type="text"], textarea {
 
 }
 
+<<<<<<< HEAD
+/*hr {
+color: black
+}*/
+=======
 .roadiefooter {
 	background-color: orange;
 	padding: 20px 0;
@@ -46,3 +51,4 @@ a {
 #landNavbar {
     font-size: larger;
 }
+>>>>>>> 23b794acc155460b981db1946beda032082429aa
