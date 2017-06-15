@@ -1,11 +1,13 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Roadie</title>
 <!-- Bootstrap -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -39,8 +41,8 @@
     <div class="collapse navbar-collapse" id="landNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/index">Home<span class="sr-only">(current)</span></a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+
+
         <li> <a href="/add.html"> Add a new place </a></li>
         <li> <a href="/view-update.html"> View / Update new places </a></li>
       </ul>
@@ -48,15 +50,14 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-        <div class="container">
-            <h1 class="jumbotron-heading">The Roadie Experience </h1>
-            <p>Roadie is an intuitive app that allows the user to add, view, and delete travel Itinerary. It is a convenient travel planner that helps you organize your day to day activities while traveling.</p>
-        </div>
+      <div class="container">
+        <h1 class="jumbotron-heading">The Roadie Experience </h1>
+        <p>Roadie is an intuitive app that allows the user to add, view, and delete travel Itinerary.  It is a convenient travel planner that helps you organize your day to day activities while traveling.</p>
+      </div>
     </div>
-    <!--Form to capture user input-->
+<!--Form to capture user input-->
     <div class="container">
      <form  id="cms">
 
@@ -77,14 +78,17 @@
 
         <div class="col-md-4">
          <h2>Any notes? </h2>
-          <label for="event_note"> Insert notes:</label><br>
+          <label for="event_note"> Insert notes::</label><br>
             <input type="text" name="event_note" id="event_note">
         </div>
       
        </div>
       
 <div class="row">
-          <div class="col-md-4">
+       
+     
+
+               <div class="col-md-4">
            <h2>First day of the trip?  </h2>
           <label for="begin_date">  </label>
             <input type="text" name="begin_date" id="begin_date" class="datepicker">
@@ -104,80 +108,28 @@
         </div> 
 </div>
       
-<<<<<<< HEAD
 <!--THE SUBMIT BUTTON THAT WORKS.......FINALLY!-->
       
-                        <div class="col-sm-4">
-                            <button type="submit" class="btn btn-success" id="submit">Create Itinerary</button>
-                        </div>
+          <div class="col-sm-4">
+            <button type="submit" class="btn btn-success" id="submit">Create Itinerary</button>
 
-                            </form>
-                  </div>
+            <br><br>
 
-                
-=======
-            <!--THE SUBMIT BUTTON THAT WORKS.......FINALLY!-->
-            <div class="col-sm-4">
-                <button type="submit" class="btn btn-success" id="submit" onclick="return initAutocomplete()">Create Itinerary</button>
-            </div>
+           <input type=button  class="btn btn-success" onClick="parent.open('https://www.google.com/maps/dir///@35.913200,-79.055847z')" value='Click here for Driving Directions' >
+  
+          </div>
+
         </form>
     </div>
->>>>>>> 6334c0487d9af217934eea97a8df2b4bc10c6bee
-    <hr>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <!--this is the map stuff-->
-                <!--*************** THIS INPUT NEEDS TO BE MOVED TO ID=PLACE IN THE FORMS...-->
-                <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-                <div id="map"></div>
-                <!--JAVASCRIPT BEGINS HERE-->
-                <script>
-                var placeSearch, autocomplete;
-                var componentForm = {
-                    street_number: 'short_name',
-                    route: 'long_name',
-                    locality: 'long_name',
-                    administrative_area_level_1: 'short_name',
-                    country: 'long_name',
-                    postal_code: 'short_name'
-                };
 
+  
+<hr>
 
-
-                //GOOGLE MAPS api - auto complete - roadmap map 
-                function initAutocomplete() {
-                    var map = new google.maps.Map(document.getElementById('map'), {
-                        center: {
-                            lat: 48.8584,
-                            lng: 2.2945
-                        },
-                        zoom: 18,
-                        mapTypeId: 'roadmap'
-                    });
-                    var x;
-
-                // THIS IS FOR THE CITY STATE INPUT
-                    // Create the autocomplete object, restricting the search to geographical
-                    // location types.
-                    autocomplete = new google.maps.places.Autocomplete(
-                        /** @type {!HTMLInputElement} */
-                        (document.getElementById('place')), {
-                            types: ['geocode']
-                        });
-                    if (x =="") {
-                      return false;
-                    }
-
-<<<<<<< HEAD
       <div class="container">      
     <div class="row">
         <div class="col-md-6">
       <!--this is the map stuff-->
-        <div class="col-md-4">
-
-           <input type=button  class="btn btn-success" onClick="parent.open('https://www.google.com/maps/dir///@35.913200,-79.055847z')" value='Click here for Driving Directions' >
-        </div>
+       
 
         <br><br>
    
@@ -262,138 +214,18 @@
     <div class="row">
        <div class="col-md-6">
          <div class="blog-container">
-=======
-                    // When the user selects an address from the dropdown, populate the address
-                    // fields in the form.
-                    autocomplete.addListener('place_changed', fillInAddress);
-                }
-
-                function fillInAddress(event) {
-                    // Get the place details from the autocomplete object.
-                    event.preventDefault();
-
-                    var place = autocomplete.getPlace();
-
-                    for (var component in componentForm) {
-                        document.getElementById(component).value = '';
-                        document.getElementById(component).disabled = false;
-                    }
-
-                    function geolocate() {
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(function(position) {
-                                var geolocation = {
-                                    lat: position.coords.latitude,
-                                    lng: position.coords.longitude
-                                };
-                                var circle = new google.maps.Circle({
-                                    center: geolocation,
-                                    radius: position.coords.accuracy
-                                });
-                                autocomplete.setBounds(circle.getBounds());
-                            });
-                        }
-                    }
-
-
-
-                    /// SEARCH BOX BY MAP BEGINS HERE
-
-
-                    // Create the search box and link it to the UI element.
-                    var input = document.getElementById('pac-input');
-                    // var input = document.getElementById('place');
-                    var searchBox = new google.maps.places.SearchBox(input);
-                    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
-                    // Bias the SearchBox results towards current map's viewport.
-                    map.addListener('bounds_changed', function() {
-                        searchBox.setBounds(map.getBounds());
-                    });
-
-                    var markers = [];
-
-                    // $("#place").html("#pac-input")
-
-                    // Listen for the event fired when the user selects a prediction and retrieve
-                    // more details for that place.
-                    searchBox.addListener('places_changed', function() {
-                        var places = searchBox.getPlaces();
-
-                        if (places.length == 0) {
-                            return;
-                        }
-
-                        // Clear out the old markers.
-                        markers.forEach(function(marker) {
-                            marker.setMap(null);
-                        });
-                        markers = [];
-
-                        // For each place, get the icon, name and location.
-                        var bounds = new google.maps.LatLngBounds();
-                        places.forEach(function(place) {
-                            if (!place.geometry) {
-                                console.log("Returned place contains no geometry");
-                                return;
-                            }
-                            var icon = {
-                                url: place.icon,
-                                size: new google.maps.Size(71, 71),
-                                origin: new google.maps.Point(0, 0),
-                                anchor: new google.maps.Point(17, 34),
-                                scaledSize: new google.maps.Size(25, 25)
-                            };
-
-                            // Create a marker for each place.
-                            markers.push(new google.maps.Marker({
-                                map: map,
-                                icon: icon,
-                                title: place.name,
-                                position: place.geometry.location
-                            }));
-
-                            if (place.geometry.viewport) {
-                                // Only geocodes have viewport.
-                                bounds.union(place.geometry.viewport);
-                            } else {
-                                bounds.extend(place.geometry.location);
-                            }
-                        });
-                        map.fitBounds(bounds);
-                    });
-                }
-                // SEARCH BOX ENDS HERE
-                </script>
-            </div>
-            <!--input field for iteniary-->
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="blog-container">
-                    </div>
-                </div>
-            </div>
->>>>>>> 6334c0487d9af217934eea97a8df2b4bc10c6bee
         </div>
-<<<<<<< Updated upstream
       </div>  
     </div>  
   </div>     
          
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-QBEKPCwoOzqMKItuK6qd_knYuxv_Y8A&libraries=places&callback=initAutocomplete"
          async defer></script>
-
-</div> <!-- /container -->         
 <!--Footer-->
-      	<footer class="roadiefooter">
-		<div class="footer-copyright">
-			<div class="container">
-				<span class="">© 2017 UNC-Chapel Hill Coding BootCamp</span>
-				<a class="grey-text text-lighten-4 right" href="https://github.com/RoadieJS/Roadie">Reference Work</a>
-			</div>
-		</div>
-	</footer>
-    
+      <footer>
+        <p>&copy; 2016 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
 
 <!--Scripts-->
   <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -410,5 +242,4 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>

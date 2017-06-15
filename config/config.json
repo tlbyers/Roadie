@@ -1,11 +1,9 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
-    "password": "Lvc2344!6962",
-=======
+
     "password": "",
->>>>>>> 23b794acc155460b981db1946beda032082429aa
+    
     "database": "roadie",
     "host": "127.0.0.1",
     "dialect": "mysql"
